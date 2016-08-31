@@ -11,7 +11,7 @@ private:
 public:
     ArgumentParser (int argCount, char const *arguments[]);
     virtual ~ArgumentParser ();
-    Argument * get(std::string name);
+    Argument* get(ArgumentName* name);
 };
 
 #endif

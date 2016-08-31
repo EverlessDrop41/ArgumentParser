@@ -16,6 +16,7 @@ public:
     ArgumentName (std::string longName, std::string shortName = "");
     bool isMatch(std::string command);
     static std::string getRawArgumentName(std::string argumentName);
+    static bool isArgument(std::string);
 };
 
 #endif
