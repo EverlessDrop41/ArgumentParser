@@ -16,7 +16,7 @@ bool ArgumentName::isMatch(std::string command) {
 }
 
 std::string ArgumentName::getRawArgumentName(std::string argumentName) {
-    if (ArgumentName::isArgument(argumentName)) {
+    if (ArgumentName::getArgumentType(argumentName) != ArgumentType::NOT) {
         char second = argumentName[1];
         if (second != '-') {
             return argumentName.substr(1);
@@ -27,22 +27,23 @@ std::string ArgumentName::getRawArgumentName(std::string argumentName) {
         //TODO: Make better error
         //ERROR - Not an arg
         throw 1;
+
     }
 }
 
-bool ArgumentName::isArgument(std::string str) {
+ArgumentType ArgumentName::getArgumentType(std::string str) {
     auto strSize = str.size();
     if (strSize >= 2) {
         bool fIsDash = str[0] == '-';
         bool sIsDash = str[1] == '-';
 
-        if (strSize >= 3) {
-            bool tIsDash = str[2] == '-';
-            return fIsDash && sIsDash && !tIsDash; //First and second are dashes but not third
+        if (fIsDash) {
+            if (sIsDash) {
+                return ArgumentType::LONG;
+            }
+            return ArgumentType::SHORT;
         }
-
-        return fIsDash && !sIsDash; //First is dash but not second
-    } else {
-        return false;
     }
+
+    return ArgumentType::NOT;
 }
