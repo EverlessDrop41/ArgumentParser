@@ -18,9 +18,15 @@ bool ArgumentName::isMatch(std::string argument) {
 }
 
 bool ArgumentName::isMatch(ArgumentName* name) {
-    auto nameStr = ArgumentName::getRawArgumentName(name->longName);
-    return nameStr != "" &&
-            (nameStr == longName || nameStr == shortName);
+    auto longNameStr = ArgumentName::getRawArgumentName(name->longName);
+    auto shortNameStr = ArgumentName::getRawArgumentName(name->shortName);
+
+    bool hasLongName = longNameStr != "";
+    bool hasShortName = shortNameStr != "";
+
+    bool longMatch = longNameStr == longName;
+    bool shortMatch = shortNameStr == shortName;
+    return (hasLongName && longMatch) || (hasShortName && shortMatch);
 }
 
 std::string ArgumentName::getRawArgumentName(std::string argumentName) {
@@ -34,8 +40,8 @@ std::string ArgumentName::getRawArgumentName(std::string argumentName) {
     } else {
         //TODO: Make better error
         //ERROR - Not an arg
-        throw 1;
-
+        //throw 1;
+        return argumentName;
     }
 }
 

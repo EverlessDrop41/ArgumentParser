@@ -18,8 +18,9 @@ ArgumentParser::ArgumentParser(int argCount, const char **arguments) {
 
                 Argument* argToAdd = nullptr;
 
-                if (ArgumentName::getArgumentType(arguments[i+1]) == ArgumentType::NOT) {
+                if (argCount > i+1 && ArgumentName::getArgumentType(arguments[i+1]) == ArgumentType::NOT) {
                     argToAdd = new Argument(name, arguments[i+1]);
+                    i++;
                 } else {
                     argToAdd = new Argument(name);
                 }
@@ -39,7 +40,8 @@ ArgumentParser::~ArgumentParser() {
 Argument* ArgumentParser::get(ArgumentName *name) {
     //TODO: return the argument
     for (int i = 0; i < arguments.size(); i++) {
-        if (arguments[i].getName()->isMatch(name)) {
+        ArgumentName* argName = arguments[i].getName();
+        if (argName->isMatch(name)) {
             return &arguments[i];
         }
     }
