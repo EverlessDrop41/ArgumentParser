@@ -1,20 +1,12 @@
 #include <ArgumentParser.hpp>
+#include <vector>
 
 ArgumentParser::ArgumentParser(int argCount, const char **arguments) {
     //TODO: parse the arguments
+    this->arguments = std::vector<Argument>();
 }
 
 ArgumentParser::~ArgumentParser() {
     //delete arguments;
 }
 
-Argument * ArgumentParser::get(std::string name) {
-    for (int i = 0; i < arguments.size(); i++) {
-        Argument* arg = &arguments[i];
-        if (arg->isCommandMatch(name)) {
-            return arg;
-        }
-    }
-
-    return NULL;
-}

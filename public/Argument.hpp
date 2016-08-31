@@ -2,19 +2,16 @@
 #define _IG_Argument
 
 #include <string>
+#include "ArgumentName.hpp"
 
 class Argument {
 private:
     /* data */
-    std::string longName;
-    std::string shortName;
+    ArgumentName* name;
     std::string value;
 public:
-    Argument (std::string longName, std::string shortName = "", std::string value = "");
-    virtual ~Argument ();
+    Argument (ArgumentName* name, std::string value = "");
     std::string getValue();
-    bool isCommandMatch(std::string command);
-    static std::string getRawCommandName(std::string command);
 };
 
 #endif
