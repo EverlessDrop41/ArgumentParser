@@ -13,9 +13,8 @@ Argument::~Argument() {}
 std::string Argument::getValue() {
     return value;
 }
-
-//Command should exclude the - and/or --
 bool Argument::isCommandMatch(std::string command) {
+    command = Argument::getRawCommandName(command);
     return command == longName || command == shortName;
 }
 
