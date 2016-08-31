@@ -37,5 +37,11 @@ ArgumentParser::~ArgumentParser() {
 }
 
 Argument* ArgumentParser::get(ArgumentName *name) {
-  //TODO: return the argument
+    //TODO: return the argument
+    for (int i = 0; i < arguments.size(); i++) {
+        if (arguments[i].getName()->isMatch(name)) {
+            return &arguments[i];
+        }
+    }
+    return nullptr;
 };

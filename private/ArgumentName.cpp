@@ -10,9 +10,17 @@ ArgumentName::ArgumentName(std::string longName, std::string shortName) {
     this->shortName = shortName;
 }
 
-bool ArgumentName::isMatch(std::string command) {
-    command = ArgumentName::getRawArgumentName(command);
-    return command == longName || command == shortName;
+bool ArgumentName::isMatch(std::string argument) {
+    argument = ArgumentName::getRawArgumentName(argument);
+
+    return argument != "" &&
+            (argument == longName || argument == shortName);
+}
+
+bool ArgumentName::isMatch(ArgumentName* name) {
+    auto nameStr = ArgumentName::getRawArgumentName(name->longName);
+    return nameStr != "" &&
+            (nameStr == longName || nameStr == shortName);
 }
 
 std::string ArgumentName::getRawArgumentName(std::string argumentName) {

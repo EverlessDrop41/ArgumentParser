@@ -11,3 +11,7 @@ Argument::Argument(ArgumentName* name, std::string value) {
 std::string Argument::getValue() {
     return value;
 }
+
+ArgumentName *Argument::getName() {
+    return name;
+}

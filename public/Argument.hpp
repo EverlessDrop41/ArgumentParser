@@ -12,6 +12,7 @@ private:
 public:
     Argument (ArgumentName* name, std::string value = "");
     std::string getValue();
+    ArgumentName* getName();
 };
 
 #endif
