@@ -12,7 +12,7 @@ std::string Argument::getValue() {
     if (this != NULL) {
         return value;
     } else {
-        throw 230;
+        throw 404;
     }
 
 }
@@ -21,6 +21,6 @@ ArgumentName *Argument::getName() {
     if (this != NULL) {
         return name;
     } else {
-        throw 230;
+        throw 404;
     }
 }
