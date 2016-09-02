@@ -6,7 +6,7 @@ A simple C++ library to easily parse launch arguments
  - C++ 11 compiler
  
 ## How to use
-1. Initialize the parser
+#### 1 - Initialize the parser
 
 ```c++
 #include <ArgumentParser.hpp>
@@ -16,7 +16,8 @@ int main(int argc, char const *argv[]) {
 }
 ```
 
-2. Get an argument
+#### 2 - Get an argument
+
 ```c++
 Argument* nameArg = parser->get(new ArgumentName("name", "N"));
 ```
@@ -25,12 +26,12 @@ Argument* nameArg = parser->get(new ArgumentName("name", "N"));
 
 In this example the arguments are `--name` and `-N`
 
-3. Get the value
+#### 3 - Get the value
 ```c++
 std::string nameArgValue = nameArg->getValue() << "\n";
 ```
 
-4. Run the application with the arguments
+#### 4 - Run the application with the arguments
 
 `[appName] --argname value -short shortvalue`
 
