@@ -22,6 +22,8 @@ int main(int argc, char const *argv[]) {
 Argument* nameArg = parser->get(new ArgumentName("name", "N"));
 ```
 
+`404` will be thrown if the argument cannot be found
+
 `ArgumentName` is a class to allow for multiple options. 
 
 In this example the arguments are `--name` and `-N`
