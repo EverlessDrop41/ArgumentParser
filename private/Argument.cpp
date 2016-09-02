@@ -9,9 +9,18 @@ Argument::Argument(ArgumentName* name, std::string value) {
 }
 
 std::string Argument::getValue() {
-    return value;
+    if (this != NULL) {
+        return value;
+    } else {
+        throw 230;
+    }
+
 }
 
 ArgumentName *Argument::getName() {
-    return name;
+    if (this != NULL) {
+        return name;
+    } else {
+        throw 230;
+    }
 }
