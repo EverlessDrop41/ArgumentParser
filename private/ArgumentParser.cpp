@@ -45,5 +45,5 @@ Argument* ArgumentParser::get(ArgumentName *name) {
             return &arguments[i];
         }
     }
-    return nullptr;
+    throw 404;
 };
